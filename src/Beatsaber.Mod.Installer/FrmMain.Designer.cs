@@ -31,14 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.txtGameDirectory = new Cr1TiKa7_Framework.Controls.TextBox.FlatTextBox();
             this.btnBrowse = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
-            this.tabControl = new Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl();
+            this.customTabControl1 = new Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl();
             this.tpMods = new System.Windows.Forms.TabPage();
-            this.tpTools = new System.Windows.Forms.TabPage();
-            this.tpHelp = new System.Windows.Forms.TabPage();
             this.tpCredits = new System.Windows.Forms.TabPage();
-            this.btnInstall = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.lbMods = new System.Windows.Forms.CheckedListBox();
-            this.tabControl.SuspendLayout();
+            this.btnUpdateInstall = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.customTabControl1.SuspendLayout();
             this.tpMods.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,76 +69,40 @@
             this.btnBrowse.UseVisualStyleBackColor = false;
             this.btnBrowse.Click += new System.EventHandler(this.OnBtnClick);
             // 
-            // tabControl
+            // customTabControl1
             // 
-            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl.Controls.Add(this.tpMods);
-            this.tabControl.Controls.Add(this.tpTools);
-            this.tabControl.Controls.Add(this.tpHelp);
-            this.tabControl.Controls.Add(this.tpCredits);
-            this.tabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabControl.Location = new System.Drawing.Point(3, 110);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(825, 441);
-            this.tabControl.TabIndex = 3;
-            this.tabControl.TabPagesBackground = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.customTabControl1.Controls.Add(this.tpMods);
+            this.customTabControl1.Controls.Add(this.tpCredits);
+            this.customTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.customTabControl1.Location = new System.Drawing.Point(7, 110);
+            this.customTabControl1.Name = "customTabControl1";
+            this.customTabControl1.SelectedIndex = 0;
+            this.customTabControl1.Size = new System.Drawing.Size(809, 438);
+            this.customTabControl1.TabIndex = 3;
+            this.customTabControl1.TabPagesBackground = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
             // 
             // tpMods
             // 
             this.tpMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tpMods.Controls.Add(this.lblStatus);
+            this.tpMods.Controls.Add(this.btnUpdateInstall);
             this.tpMods.Controls.Add(this.lbMods);
-            this.tpMods.Controls.Add(this.btnInstall);
             this.tpMods.Location = new System.Drawing.Point(4, 25);
             this.tpMods.Name = "tpMods";
             this.tpMods.Padding = new System.Windows.Forms.Padding(3);
-            this.tpMods.Size = new System.Drawing.Size(817, 412);
+            this.tpMods.Size = new System.Drawing.Size(801, 409);
             this.tpMods.TabIndex = 0;
             this.tpMods.Text = "Mods";
-            // 
-            // tpTools
-            // 
-            this.tpTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tpTools.Location = new System.Drawing.Point(4, 25);
-            this.tpTools.Name = "tpTools";
-            this.tpTools.Padding = new System.Windows.Forms.Padding(3);
-            this.tpTools.Size = new System.Drawing.Size(817, 434);
-            this.tpTools.TabIndex = 1;
-            this.tpTools.Text = "Tools";
-            // 
-            // tpHelp
-            // 
-            this.tpHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tpHelp.Location = new System.Drawing.Point(4, 25);
-            this.tpHelp.Name = "tpHelp";
-            this.tpHelp.Size = new System.Drawing.Size(817, 422);
-            this.tpHelp.TabIndex = 2;
-            this.tpHelp.Text = "Help";
             // 
             // tpCredits
             // 
             this.tpCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
             this.tpCredits.Location = new System.Drawing.Point(4, 25);
             this.tpCredits.Name = "tpCredits";
-            this.tpCredits.Size = new System.Drawing.Size(817, 422);
-            this.tpCredits.TabIndex = 3;
+            this.tpCredits.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCredits.Size = new System.Drawing.Size(801, 409);
+            this.tpCredits.TabIndex = 1;
             this.tpCredits.Text = "Credits";
-            // 
-            // btnInstall
-            // 
-            this.btnInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnInstall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.btnInstall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstall.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btnInstall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.btnInstall.Location = new System.Drawing.Point(712, 380);
-            this.btnInstall.Name = "btnInstall";
-            this.btnInstall.Size = new System.Drawing.Size(99, 28);
-            this.btnInstall.TabIndex = 4;
-            this.btnInstall.Text = "Install/Update";
-            this.btnInstall.UseVisualStyleBackColor = false;
             // 
             // lbMods
             // 
@@ -147,17 +110,41 @@
             this.lbMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbMods.ForeColor = System.Drawing.Color.White;
             this.lbMods.FormattingEnabled = true;
-            this.lbMods.Location = new System.Drawing.Point(0, 0);
+            this.lbMods.Location = new System.Drawing.Point(1, 0);
             this.lbMods.Name = "lbMods";
-            this.lbMods.Size = new System.Drawing.Size(817, 374);
-            this.lbMods.TabIndex = 5;
+            this.lbMods.Size = new System.Drawing.Size(800, 374);
+            this.lbMods.TabIndex = 0;
+            // 
+            // btnUpdateInstall
+            // 
+            this.btnUpdateInstall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.btnUpdateInstall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateInstall.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btnUpdateInstall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.btnUpdateInstall.Location = new System.Drawing.Point(698, 380);
+            this.btnUpdateInstall.Name = "btnUpdateInstall";
+            this.btnUpdateInstall.Size = new System.Drawing.Size(97, 23);
+            this.btnUpdateInstall.TabIndex = 1;
+            this.btnUpdateInstall.Text = "Install/Update";
+            this.btnUpdateInstall.UseVisualStyleBackColor = false;
+            this.btnUpdateInstall.Click += new System.EventHandler(this.OnBtnInstallClick);
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.ForeColor = System.Drawing.Color.White;
+            this.lblStatus.Location = new System.Drawing.Point(6, 380);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(52, 20);
+            this.lblStatus.TabIndex = 2;
+            this.lblStatus.Text = "Status:";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(828, 551);
-            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.customTabControl1);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtGameDirectory);
             this.FormIcon = ((System.Drawing.Image)(resources.GetObject("$this.FormIcon")));
@@ -166,9 +153,10 @@
             this.Shown += new System.EventHandler(this.OnFrmShown);
             this.Controls.SetChildIndex(this.txtGameDirectory, 0);
             this.Controls.SetChildIndex(this.btnBrowse, 0);
-            this.Controls.SetChildIndex(this.tabControl, 0);
-            this.tabControl.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.customTabControl1, 0);
+            this.customTabControl1.ResumeLayout(false);
             this.tpMods.ResumeLayout(false);
+            this.tpMods.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,13 +166,12 @@
 
         private Cr1TiKa7_Framework.Controls.TextBox.FlatTextBox txtGameDirectory;
         private Cr1TiKa7_Framework.Controls.Button.FlatButton btnBrowse;
-        private Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl tabControl;
+        private Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl customTabControl1;
         private System.Windows.Forms.TabPage tpMods;
-        private System.Windows.Forms.TabPage tpTools;
-        private System.Windows.Forms.TabPage tpHelp;
-        private System.Windows.Forms.TabPage tpCredits;
-        private Cr1TiKa7_Framework.Controls.Button.FlatButton btnInstall;
         private System.Windows.Forms.CheckedListBox lbMods;
+        private System.Windows.Forms.TabPage tpCredits;
+        private Cr1TiKa7_Framework.Controls.Button.FlatButton btnUpdateInstall;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
 

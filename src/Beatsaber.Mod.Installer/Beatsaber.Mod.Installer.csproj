@@ -38,6 +38,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,7 +57,7 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModApiHandler.cs" />
+    <Compile Include="BeatModsHandler.cs" />
     <Compile Include="Models\ModAuthorObject.cs" />
     <Compile Include="Models\ModApiObject.cs" />
     <Compile Include="Models\ModDependencyObject.cs" />
