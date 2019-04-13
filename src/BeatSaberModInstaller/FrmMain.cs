@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using BeatSaberModInstaller.Core;
+using BeatSaberModInstaller.Handler;
 using BeatSaberModInstaller.Models;
 using Cr1TiKa7_Framework.Baseform;
 
@@ -17,19 +19,27 @@ namespace BeatSaberModInstaller
 
 #if DEBUG
             AllocConsole();
-
+#endif
             if (File.Exists("path.txt"))
             {
                 txtGameDirectory.Text = File.ReadAllText("path.txt");
             }
-#endif
         }
 
         private void OnFormShown(object sender, EventArgs e)
         {
+            UpdateStatus("Loading mod list...");
+
             try
             {
-                lbMods.Items.AddRange(_beatModsHandler.GetModList().ToArray());
+                var modList = _beatModsHandler.GetModList();
+                if (modList == null)
+                {
+                    UpdateStatus("Loading mod list failed.");
+                    return;
+                }
+
+                lbMods.Items.AddRange(modList.ToArray());
                 UpdateStatus("Mod list loaded.");
             }
             catch (Exception ex)
@@ -63,7 +73,8 @@ namespace BeatSaberModInstaller
                 return;
             }
 
-            _beatModsHandler.DownloadDirectory = Path.Combine(txtGameDirectory.Text, "downloads");
+            btnUpdateInstall.Enabled = false;
+
             var downloadsFinished = true;
             foreach (var item in lbMods.CheckedItems)
             {
@@ -71,24 +82,31 @@ namespace BeatSaberModInstaller
 
                 UpdateStatus($"Downloading {modObject.Name}...");
                 if (!_beatModsHandler.DownloadMod(modObject, txtGameDirectory.Text))
+                {
                     downloadsFinished = false;
+                }
             }
 
             _beatModsHandler.ResetDownloadedMods();
-            _beatModsHandler.DeleteDirectory();
+            FileHelper.DeleteDirectory(FileHelper.TempDirectory);
 
             UpdateStatus(downloadsFinished ? "Download was successful." : "Download failed.");
+            btnUpdateInstall.Enabled = true;
         }
 
         private void UpdateStatus(string status)
         {
-            statusLabel.Text = @"Status: " + status;
+            statusLabel.Text = $@"Status: {status}";
         }
+
+        #region debug
 
 #if DEBUG
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool AllocConsole();
 #endif
+
+        #endregion
     }
 }
