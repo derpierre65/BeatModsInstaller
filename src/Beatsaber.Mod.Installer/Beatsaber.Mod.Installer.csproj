@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cr1TiKa7.Framework, Version=1.0.0.1839, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>G:\Backup 27.02.2018\GitProjekte\cr1tika7-framework\Cr1TiKa7-Framework\bin\Debug\Cr1TiKa7.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -90,12 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="G:\Backup 27.02.2018\GitProjekte\cr1tika7-framework\Cr1TiKa7-Framework\Cr1TiKa7-Framework.csproj">
-      <Project>{B4C1A34A-5CBC-4B59-BEE5-46C7101902D3}</Project>
-      <Name>Cr1TiKa7-Framework</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

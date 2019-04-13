@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Beatsaber.Mod.Installer", "Beatsaber.Mod.Installer\Beatsaber.Mod.Installer.csproj", "{385E95B1-2A4F-467A-9332-5E94BC44FB6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cr1TiKa7-Framework", "G:\Backup 27.02.2018\GitProjekte\cr1tika7-framework\Cr1TiKa7-Framework\Cr1TiKa7-Framework.csproj", "{B4C1A34A-5CBC-4B59-BEE5-46C7101902D3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{385E95B1-2A4F-467A-9332-5E94BC44FB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{385E95B1-2A4F-467A-9332-5E94BC44FB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{385E95B1-2A4F-467A-9332-5E94BC44FB6E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4C1A34A-5CBC-4B59-BEE5-46C7101902D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4C1A34A-5CBC-4B59-BEE5-46C7101902D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4C1A34A-5CBC-4B59-BEE5-46C7101902D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4C1A34A-5CBC-4B59-BEE5-46C7101902D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,8 +37,10 @@
             this.lbMods = new System.Windows.Forms.CheckedListBox();
             this.btnUpdateInstall = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.lblStatus = new System.Windows.Forms.Label();
+            this.txtCredits = new Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox();
             this.customTabControl1.SuspendLayout();
             this.tpMods.SuspendLayout();
+            this.tpCredits.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtGameDirectory
@@ -96,7 +98,8 @@
             // 
             // tpCredits
             // 
-            this.tpCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tpCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.tpCredits.Controls.Add(this.txtCredits);
             this.tpCredits.Location = new System.Drawing.Point(4, 25);
             this.tpCredits.Name = "tpCredits";
             this.tpCredits.Padding = new System.Windows.Forms.Padding(3);
@@ -106,6 +109,9 @@
             // 
             // lbMods
             // 
+            this.lbMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
             this.lbMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbMods.ForeColor = System.Drawing.Color.White;
@@ -117,6 +123,7 @@
             // 
             // btnUpdateInstall
             // 
+            this.btnUpdateInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateInstall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
             this.btnUpdateInstall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateInstall.Font = new System.Drawing.Font("Segoe UI", 8F);
@@ -131,6 +138,7 @@
             // 
             // lblStatus
             // 
+            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStatus.AutoSize = true;
             this.lblStatus.ForeColor = System.Drawing.Color.White;
             this.lblStatus.Location = new System.Drawing.Point(6, 380);
@@ -138,6 +146,18 @@
             this.lblStatus.Size = new System.Drawing.Size(52, 20);
             this.lblStatus.TabIndex = 2;
             this.lblStatus.Text = "Status:";
+            // 
+            // txtCredits
+            // 
+            this.txtCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.txtCredits.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCredits.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCredits.ForeColor = System.Drawing.Color.White;
+            this.txtCredits.Location = new System.Drawing.Point(6, 6);
+            this.txtCredits.Name = "txtCredits";
+            this.txtCredits.Size = new System.Drawing.Size(789, 397);
+            this.txtCredits.TabIndex = 0;
+            this.txtCredits.Text = "Tool created by:\n- Cr1TiKa7\n- derpierre65\n\nOriginal Tool by:\n- vanZeben";
             // 
             // FrmMain
             // 
@@ -157,6 +177,7 @@
             this.customTabControl1.ResumeLayout(false);
             this.tpMods.ResumeLayout(false);
             this.tpMods.PerformLayout();
+            this.tpCredits.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,6 +193,7 @@
         private System.Windows.Forms.TabPage tpCredits;
         private Cr1TiKa7_Framework.Controls.Button.FlatButton btnUpdateInstall;
         private System.Windows.Forms.Label lblStatus;
+        private Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox txtCredits;
     }
 }
 
