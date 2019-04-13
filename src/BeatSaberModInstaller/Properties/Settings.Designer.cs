@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Beatsaber.Mod.Installer.Properties
+namespace BeatSaberModInstaller.Properties
 {
 
 

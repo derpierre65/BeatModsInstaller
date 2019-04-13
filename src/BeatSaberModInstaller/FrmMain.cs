@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
-using Beatsaber.Mod.Installer.Models;
+using BeatSaberModInstaller.Models;
 using Cr1TiKa7_Framework.Baseform;
 
-namespace Beatsaber.Mod.Installer
+namespace BeatSaberModInstaller
 {
     public partial class FrmMain : Baseform
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Beatsaber.Mod.Installer.Properties
+namespace BeatSaberModInstaller.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace Beatsaber.Mod.Installer.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Beatsaber.Mod.Installer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BeatSaberModInstaller.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

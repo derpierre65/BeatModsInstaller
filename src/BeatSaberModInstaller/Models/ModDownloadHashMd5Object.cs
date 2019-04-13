@@ -1,4 +1,4 @@
-﻿namespace Beatsaber.Mod.Installer.Models
+﻿namespace BeatSaberModInstaller.Models
 {
     public class ModDownloadHashMd5Object
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Beatsaber.Mod.Installer.Models
+namespace BeatSaberModInstaller.Models
 {
     public class ModApiObject
     {

@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{385E95B1-2A4F-467A-9332-5E94BC44FB6E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Beatsaber.Mod.Installer</RootNamespace>
-    <AssemblyName>Beatsaber.Mod.Installer</AssemblyName>
+    <RootNamespace>BeatSaberModInstaller</RootNamespace>
+    <AssemblyName>BeatSaberModInstaller</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

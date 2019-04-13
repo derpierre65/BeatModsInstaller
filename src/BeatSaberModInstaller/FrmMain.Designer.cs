@@ -1,4 +1,4 @@
-﻿namespace Beatsaber.Mod.Installer
+﻿namespace BeatSaberModInstaller
 {
     partial class FrmMain
     {

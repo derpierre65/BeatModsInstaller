@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Beatsaber.Mod.Installer.Models
+namespace BeatSaberModInstaller.Models
 {
     public class ModDependencyObject : ModApiObject
     {

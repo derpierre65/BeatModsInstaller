@@ -5,10 +5,10 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using Beatsaber.Mod.Installer.Models;
+using BeatSaberModInstaller.Models;
 using Newtonsoft.Json;
 
-namespace Beatsaber.Mod.Installer
+namespace BeatSaberModInstaller
 {
     public class BeatModsHandler
     {
