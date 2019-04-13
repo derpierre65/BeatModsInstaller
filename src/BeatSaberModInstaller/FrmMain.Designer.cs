@@ -55,6 +55,7 @@
             this.txtGameDirectory.Name = "txtGameDirectory";
             this.txtGameDirectory.Size = new System.Drawing.Size(721, 28);
             this.txtGameDirectory.TabIndex = 1;
+            this.txtGameDirectory.TextChanged += new System.EventHandler(this.OnGameDirectoryChanged);
             // 
             // btnBrowse
             // 
@@ -157,7 +158,7 @@
             this.txtCredits.Name = "txtCredits";
             this.txtCredits.Size = new System.Drawing.Size(789, 397);
             this.txtCredits.TabIndex = 0;
-            this.txtCredits.Text = "Tool created by:\n- Cr1TiKa7\n- derpierre65\n\nOriginal Tool by:\n- vanZeben";
+            this.txtCredits.Text = "Tool created by:\n- Cr1TiKa7\n- derpierre65\n\nBeatMods Developer:\n- vanZeben";
             // 
             // FrmMain
             // 

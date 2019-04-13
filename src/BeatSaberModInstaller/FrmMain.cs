@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using BeatSaberModInstaller.Models;
 using Cr1TiKa7_Framework.Baseform;
@@ -13,6 +14,15 @@ namespace BeatSaberModInstaller
         public FrmMain()
         {
             InitializeComponent();
+
+#if DEBUG
+            AllocConsole();
+
+            if (File.Exists("path.txt"))
+            {
+                txtGameDirectory.Text = File.ReadAllText("path.txt");
+            }
+#endif
         }
 
         private void OnFormShown(object sender, EventArgs e)
@@ -37,6 +47,11 @@ namespace BeatSaberModInstaller
                     txtGameDirectory.Text = fbd.SelectedPath;
                 }
             }
+        }
+
+        private void OnGameDirectoryChanged(object sender, EventArgs e)
+        {
+            File.WriteAllText("path.txt", txtGameDirectory.Text);
         }
 
         private void OnInstallButtonClick(object sender, System.EventArgs e)
@@ -67,7 +82,13 @@ namespace BeatSaberModInstaller
 
         private void UpdateStatus(string status)
         {
-            statusLabel.Text = "Status: " + status;
+            statusLabel.Text = @"Status: " + status;
         }
+
+#if DEBUG
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool AllocConsole();
+#endif
     }
 }
