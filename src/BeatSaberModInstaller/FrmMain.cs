@@ -9,25 +9,26 @@ namespace BeatSaberModInstaller
     public partial class FrmMain : Baseform
     {
         private readonly BeatModsHandler _beatModsHandler = new BeatModsHandler();
+
         public FrmMain()
         {
             InitializeComponent();
         }
 
-        private void OnFrmShown(object sender, System.EventArgs e)
+        private void OnFormShown(object sender, EventArgs e)
         {
             try
             {
                 lbMods.Items.AddRange(_beatModsHandler.GetModList().ToArray());
-                lblStatus.Text = "Status: Mod list loaded.";
+                UpdateStatus("Mod list loaded.");
             }
             catch (Exception ex)
             {
-                lblStatus.Text = "Status: Loading mod list failed.";
+                UpdateStatus("Loading mod list failed.");
             }
         }
 
-        private void OnBtnClick(object sender, System.EventArgs e)
+        private void OnBrowseButtonClick(object sender, EventArgs e)
         {
             using (var fbd = new FolderBrowserDialog())
             {
@@ -38,34 +39,35 @@ namespace BeatSaberModInstaller
             }
         }
 
-        private void OnBtnInstallClick(object sender, System.EventArgs e)
+        private void OnInstallButtonClick(object sender, System.EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtGameDirectory.Text))
             {
-                MessageBox.Show(this, "You need to select the plugins directory.", "No directory selected.",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                UpdateStatus("You need to select the Beat Saber directory.");
+
                 return;
             }
 
             _beatModsHandler.DownloadDirectory = Path.Combine(txtGameDirectory.Text, "downloads");
             var downloadsFinished = true;
-            lblStatus.Text = "Status: Download started...";
             foreach (var item in lbMods.CheckedItems)
             {
-                if (item is ModApiObject modObject)
-                {
-                    lblStatus.Text = $"Status: Downloading '{modObject.Name}'...";
-                    if (!_beatModsHandler.DownloadMod(modObject, txtGameDirectory.Text))
-                        downloadsFinished = false;
-                }
+                if (!(item is ModApiObject modObject)) continue;
+
+                UpdateStatus($"Downloading {modObject.Name}...");
+                if (!_beatModsHandler.DownloadMod(modObject, txtGameDirectory.Text))
+                    downloadsFinished = false;
             }
 
             _beatModsHandler.ResetDownloadedMods();
             _beatModsHandler.DeleteDirectory();
-            if (downloadsFinished)
-                lblStatus.Text = "Status: Download was successful.";
-            else
-                lblStatus.Text = "Status: Download failed!";
+
+            UpdateStatus(downloadsFinished ? "Download was successful." : "Download failed.");
+        }
+
+        private void UpdateStatus(string status)
+        {
+            statusLabel.Text = "Status: " + status;
         }
     }
 }

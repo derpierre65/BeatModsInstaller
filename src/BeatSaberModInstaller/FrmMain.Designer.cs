@@ -36,7 +36,7 @@
             this.tpCredits = new System.Windows.Forms.TabPage();
             this.lbMods = new System.Windows.Forms.CheckedListBox();
             this.btnUpdateInstall = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
-            this.lblStatus = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
             this.txtCredits = new Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox();
             this.customTabControl1.SuspendLayout();
             this.tpMods.SuspendLayout();
@@ -69,7 +69,7 @@
             this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = false;
-            this.btnBrowse.Click += new System.EventHandler(this.OnBtnClick);
+            this.btnBrowse.Click += new System.EventHandler(this.OnBrowseButtonClick);
             // 
             // customTabControl1
             // 
@@ -86,7 +86,7 @@
             // tpMods
             // 
             this.tpMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.tpMods.Controls.Add(this.lblStatus);
+            this.tpMods.Controls.Add(this.statusLabel);
             this.tpMods.Controls.Add(this.btnUpdateInstall);
             this.tpMods.Controls.Add(this.lbMods);
             this.tpMods.Location = new System.Drawing.Point(4, 25);
@@ -134,18 +134,18 @@
             this.btnUpdateInstall.TabIndex = 1;
             this.btnUpdateInstall.Text = "Install/Update";
             this.btnUpdateInstall.UseVisualStyleBackColor = false;
-            this.btnUpdateInstall.Click += new System.EventHandler(this.OnBtnInstallClick);
+            this.btnUpdateInstall.Click += new System.EventHandler(this.OnInstallButtonClick);
             // 
             // lblStatus
             // 
-            this.lblStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.ForeColor = System.Drawing.Color.White;
-            this.lblStatus.Location = new System.Drawing.Point(6, 380);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(52, 20);
-            this.lblStatus.TabIndex = 2;
-            this.lblStatus.Text = "Status:";
+            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Location = new System.Drawing.Point(6, 380);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(52, 20);
+            this.statusLabel.TabIndex = 2;
+            this.statusLabel.Text = "Status:";
             // 
             // txtCredits
             // 
@@ -170,7 +170,7 @@
             this.FormIcon = ((System.Drawing.Image)(resources.GetObject("$this.FormIcon")));
             this.Name = "FrmMain";
             this.Text = "Beatsaber Mod Installer";
-            this.Shown += new System.EventHandler(this.OnFrmShown);
+            this.Shown += new System.EventHandler(this.OnFormShown);
             this.Controls.SetChildIndex(this.txtGameDirectory, 0);
             this.Controls.SetChildIndex(this.btnBrowse, 0);
             this.Controls.SetChildIndex(this.customTabControl1, 0);
@@ -192,7 +192,7 @@
         private System.Windows.Forms.CheckedListBox lbMods;
         private System.Windows.Forms.TabPage tpCredits;
         private Cr1TiKa7_Framework.Controls.Button.FlatButton btnUpdateInstall;
-        private System.Windows.Forms.Label lblStatus;
+        private System.Windows.Forms.Label statusLabel;
         private Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox txtCredits;
     }
 }
