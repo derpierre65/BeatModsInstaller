@@ -17,6 +17,11 @@ namespace BeatSaberModInstaller
         {
             InitializeComponent();
 
+            _beatModsHandler.StatusHandler += (sender, e) =>
+            {
+                UpdateStatus(e.Message);
+            };
+
 #if DEBUG
             AllocConsole();
 #endif
@@ -64,7 +69,7 @@ namespace BeatSaberModInstaller
             File.WriteAllText("path.txt", txtGameDirectory.Text);
         }
 
-        private void OnInstallButtonClick(object sender, System.EventArgs e)
+        private void OnInstallButtonClick(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtGameDirectory.Text))
             {
@@ -80,7 +85,6 @@ namespace BeatSaberModInstaller
             {
                 if (!(item is ModApiObject modObject)) continue;
 
-                UpdateStatus($"Downloading {modObject.Name}...");
                 if (!_beatModsHandler.DownloadMod(modObject, txtGameDirectory.Text))
                 {
                     downloadsFinished = false;
@@ -92,6 +96,15 @@ namespace BeatSaberModInstaller
 
             UpdateStatus(downloadsFinished ? "Download was successful." : "Download failed.");
             btnUpdateInstall.Enabled = true;
+        }
+
+        private void OnOpenLinkButtonClick(object sender, EventArgs e)
+        {
+            lbMods.SelectionMode = SelectionMode.MultiSimple;
+            if (lbMods.SelectedItem is ModApiObject modObject && !string.IsNullOrWhiteSpace(modObject.Link))
+            {
+                System.Diagnostics.Process.Start(modObject.Link);
+            }
         }
 
         private void UpdateStatus(string status)

@@ -8,8 +8,20 @@ using Newtonsoft.Json;
 
 namespace BeatSaberModInstaller.Handler
 {
+    public class StatusEvent : EventArgs
+    {
+        public string Message { get; set; }
+
+        public StatusEvent(string msg)
+        {
+            Message = msg;
+        }
+    }
+
     public class BeatModsHandler
     {
+        public event EventHandler<StatusEvent> StatusHandler;
+        
         private const string ModApiBasicUrl = "https://beatmods.com";
         private const string ModApiUrl = "/api/v1/mod";
 
@@ -43,6 +55,8 @@ namespace BeatSaberModInstaller.Handler
                 return true;
             }
             _downloadedPackages.Add(mod.Name);
+            
+            StatusHandler?.Invoke(null, new StatusEvent($"Downloading {mod.Name}..."));
 
             var tmpFileName = $"mod-{mod.Name}-{mod.Version}.zip";
             if (!HttpHelper.DownloadFile(new Uri(ModApiBasicUrl + mod.Downloads.First().Url), tmpFileName))
