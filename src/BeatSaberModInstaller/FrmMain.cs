@@ -12,6 +12,7 @@ namespace BeatSaberModInstaller
     public partial class FrmMain : Baseform
     {
         private readonly BeatModsHandler _beatModsHandler = new BeatModsHandler();
+        private readonly BeatSaverHandler _beatSaverHandler = new BeatSaverHandler();
 
         public FrmMain()
         {

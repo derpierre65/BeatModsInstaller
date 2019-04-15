@@ -63,11 +63,16 @@
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Handler\BeatModsHandler.cs" />
+    <Compile Include="Handler\BeatSaverHandler.cs" />
     <Compile Include="Models\ModAuthorObject.cs" />
     <Compile Include="Models\ModApiObject.cs" />
     <Compile Include="Models\ModDependencyObject.cs" />
     <Compile Include="Models\ModDownloadHashMd5Object.cs" />
     <Compile Include="Models\ModDownloadObject.cs" />
+    <Compile Include="Models\SongObject.cs" />
+    <Compile Include="Models\SongDifficultiesObject.cs" />
+    <Compile Include="Models\SongDifficultyObject.cs" />
+    <Compile Include="Models\SongsObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
