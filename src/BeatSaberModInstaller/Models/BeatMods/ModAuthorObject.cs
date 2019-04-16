@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace BeatSaberModInstaller.Models
+namespace BeatSaberModInstaller.Models.BeatMods
 {
     public class ModAuthorObject
     {

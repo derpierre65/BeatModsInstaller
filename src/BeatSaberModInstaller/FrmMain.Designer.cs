@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.txtGameDirectory = new Cr1TiKa7_Framework.Controls.TextBox.FlatTextBox();
+            this.txtGamePath = new Cr1TiKa7_Framework.Controls.TextBox.FlatTextBox();
             this.btnBrowse = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.customTabControl1 = new Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl();
             this.tpMods = new System.Windows.Forms.TabPage();
@@ -43,19 +43,19 @@
             this.tpCredits.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtGameDirectory
+            // txtGamePath
             // 
-            this.txtGameDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGameDirectory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
-            this.txtGameDirectory.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtGameDirectory.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGameDirectory.ForeColor = System.Drawing.Color.White;
-            this.txtGameDirectory.Location = new System.Drawing.Point(7, 76);
-            this.txtGameDirectory.Name = "txtGameDirectory";
-            this.txtGameDirectory.Size = new System.Drawing.Size(721, 28);
-            this.txtGameDirectory.TabIndex = 1;
-            this.txtGameDirectory.TextChanged += new System.EventHandler(this.OnGameDirectoryChanged);
+            this.txtGamePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.txtGamePath.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtGamePath.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGamePath.ForeColor = System.Drawing.Color.White;
+            this.txtGamePath.Location = new System.Drawing.Point(7, 76);
+            this.txtGamePath.Name = "txtGamePath";
+            this.txtGamePath.Size = new System.Drawing.Size(721, 28);
+            this.txtGamePath.TabIndex = 1;
+            this.txtGamePath.TextChanged += new System.EventHandler(this.OnGameDirectoryChanged);
             // 
             // btnBrowse
             // 
@@ -156,6 +156,7 @@
             this.txtCredits.ForeColor = System.Drawing.Color.White;
             this.txtCredits.Location = new System.Drawing.Point(6, 6);
             this.txtCredits.Name = "txtCredits";
+            this.txtCredits.ReadOnly = true;
             this.txtCredits.Size = new System.Drawing.Size(789, 397);
             this.txtCredits.TabIndex = 0;
             this.txtCredits.Text = "Tool created by:\n- Cr1TiKa7\n- derpierre65\n\nBeatMods Developer:\n- vanZeben";
@@ -167,12 +168,12 @@
             this.ClientSize = new System.Drawing.Size(828, 551);
             this.Controls.Add(this.customTabControl1);
             this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.txtGameDirectory);
+            this.Controls.Add(this.txtGamePath);
             this.FormIcon = ((System.Drawing.Image)(resources.GetObject("$this.FormIcon")));
             this.Name = "FrmMain";
             this.Text = "Beatsaber Mod Installer";
             this.Shown += new System.EventHandler(this.OnFormShown);
-            this.Controls.SetChildIndex(this.txtGameDirectory, 0);
+            this.Controls.SetChildIndex(this.txtGamePath, 0);
             this.Controls.SetChildIndex(this.btnBrowse, 0);
             this.Controls.SetChildIndex(this.customTabControl1, 0);
             this.customTabControl1.ResumeLayout(false);
@@ -186,7 +187,7 @@
 
         #endregion
 
-        private Cr1TiKa7_Framework.Controls.TextBox.FlatTextBox txtGameDirectory;
+        private Cr1TiKa7_Framework.Controls.TextBox.FlatTextBox txtGamePath;
         private Cr1TiKa7_Framework.Controls.Button.FlatButton btnBrowse;
         private Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl customTabControl1;
         private System.Windows.Forms.TabPage tpMods;

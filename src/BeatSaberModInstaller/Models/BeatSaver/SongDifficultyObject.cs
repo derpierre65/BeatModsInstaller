@@ -1,4 +1,4 @@
-namespace BeatSaberModInstaller.Models
+namespace BeatSaberModInstaller.Models.BeatSaver
 {
     public class SongDifficultyObject
     {

@@ -5,20 +5,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using BeatSaberModInstaller.Core;
 using BeatSaberModInstaller.Models;
+using BeatSaberModInstaller.Models.BeatMods;
+using BeatSaberModInstaller.Models.Events;
 using Newtonsoft.Json;
 
 namespace BeatSaberModInstaller.Handler
 {
-    public class StatusEvent : EventArgs
-    {
-        public string Message { get; set; }
-
-        public StatusEvent(string msg)
-        {
-            Message = msg;
-        }
-    }
-
     public class BeatModsHandler
     {
         public event EventHandler<StatusEvent> StatusHandler;
@@ -26,10 +18,16 @@ namespace BeatSaberModInstaller.Handler
         private const string ModApiBasicUrl = "https://beatmods.com";
         private const string ModApiUrl = "/api/v1/mod";
 
-        private HttpHelper _httpHelper = new HttpHelper();
-//        private readonly string _tmpFileName = ".\\mod.zip";
+        private readonly HttpHelper _httpHelper;
+        private readonly FileHelper _fileHelper;
         private readonly List<string> _downloadedPackages = new List<string>();
         private IEnumerable<ModApiObject> _mods = new List<ModApiObject>();
+
+        public BeatModsHandler(HttpHelper httpHelper, FileHelper fileHelper)
+        {
+            _httpHelper = httpHelper ?? throw new ArgumentNullException(nameof(httpHelper));
+            _fileHelper = fileHelper ?? throw new ArgumentNullException(nameof(fileHelper));
+        }
 
         public List<ModApiObject> GetModList()
         {
@@ -67,7 +65,7 @@ namespace BeatSaberModInstaller.Handler
                 return false;
             }
 
-            FileHelper.Instance.Extract(tmpFileName, destinationDirectory);
+            _fileHelper.Extract(tmpFileName, destinationDirectory);
             File.Delete(tmpFileName);
 
             if (mod is ModDependencyObject dependencyMod)

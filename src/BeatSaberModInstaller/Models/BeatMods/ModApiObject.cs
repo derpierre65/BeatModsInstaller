@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace BeatSaberModInstaller.Models
+namespace BeatSaberModInstaller.Models.BeatMods
 {
     public class ModApiObject
     {
@@ -24,9 +24,9 @@ namespace BeatSaberModInstaller.Models
         public bool Required { get; set; }
         public IEnumerable<ModDependencyObject> Dependencies { get; set; } = new List<ModDependencyObject>();
 
-        public bool IsInstalled()
+        public bool IsInstalled(string gamePath)
         {
-            return File.Exists(FrmMain.GameDirectory + "/" + Downloads.First().HashMd5.First().File);
+            return File.Exists(gamePath + "/" + Downloads.First().HashMd5.First().File);
         }
 
         public override string ToString()

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BeatSaberModInstaller.Models
+namespace BeatSaberModInstaller.Models.BeatSaver
 {
     public class SongsObject
     {

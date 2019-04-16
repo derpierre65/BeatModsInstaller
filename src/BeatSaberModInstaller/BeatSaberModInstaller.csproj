@@ -39,6 +39,9 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2-beta1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -64,15 +67,19 @@
     </Compile>
     <Compile Include="Handler\BeatModsHandler.cs" />
     <Compile Include="Handler\BeatSaverHandler.cs" />
-    <Compile Include="Models\ModAuthorObject.cs" />
-    <Compile Include="Models\ModApiObject.cs" />
-    <Compile Include="Models\ModDependencyObject.cs" />
-    <Compile Include="Models\ModDownloadHashMd5Object.cs" />
-    <Compile Include="Models\ModDownloadObject.cs" />
-    <Compile Include="Models\SongObject.cs" />
-    <Compile Include="Models\SongDifficultiesObject.cs" />
-    <Compile Include="Models\SongDifficultyObject.cs" />
-    <Compile Include="Models\SongsObject.cs" />
+    <Compile Include="Handler\SettingsHandler.cs" />
+    <Compile Include="Models\Events\StatusEvent.cs" />
+    <Compile Include="MainKernel.cs" />
+    <Compile Include="Models\BeatMods\ModAuthorObject.cs" />
+    <Compile Include="Models\BeatMods\ModApiObject.cs" />
+    <Compile Include="Models\BeatMods\ModDependencyObject.cs" />
+    <Compile Include="Models\BeatMods\ModDownloadHashMd5Object.cs" />
+    <Compile Include="Models\BeatMods\ModDownloadObject.cs" />
+    <Compile Include="Models\BeatSaver\SongObject.cs" />
+    <Compile Include="Models\BeatSaver\SongDifficultiesObject.cs" />
+    <Compile Include="Models\BeatSaver\SongDifficultyObject.cs" />
+    <Compile Include="Models\BeatSaver\SongsObject.cs" />
+    <Compile Include="Models\Settings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">

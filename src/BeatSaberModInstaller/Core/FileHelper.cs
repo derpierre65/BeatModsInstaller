@@ -6,13 +6,11 @@ namespace BeatSaberModInstaller.Core
     public class FileHelper
     {
         public const string TempDirectory = "./downloads";
-
-        private static FileHelper _instance;
-        public static FileHelper Instance => _instance ?? (_instance = new FileHelper());
         
-        /**
-         * delete a complete directory
-         */
+        /// <summary>
+        /// Deletes a directory which is not empty.
+        /// </summary>
+        /// <param name="directory">Path of the directory</param>
         public void DeleteDirectory(string directory)
         {
             if (string.IsNullOrWhiteSpace(directory)) return;
@@ -33,6 +31,11 @@ namespace BeatSaberModInstaller.Core
             Directory.Delete(directory);
         }
 
+        /// <summary>
+        /// Extracts a zipfile into the desitination directory.
+        /// </summary>
+        /// <param name="zipFile">Path of the zipfile.</param>
+        /// <param name="destinationDirectory">Path to the destination directory.</param>
         public void Extract(string zipFile, string destinationDirectory)
         {
             ZipFile.ExtractToDirectory(zipFile, TempDirectory);

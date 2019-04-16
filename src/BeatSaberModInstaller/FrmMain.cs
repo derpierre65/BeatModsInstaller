@@ -5,19 +5,30 @@ using System.Windows.Forms;
 using BeatSaberModInstaller.Core;
 using BeatSaberModInstaller.Handler;
 using BeatSaberModInstaller.Models;
+using BeatSaberModInstaller.Models.BeatMods;
 using Cr1TiKa7_Framework.Baseform;
+using Ninject;
 
 namespace BeatSaberModInstaller
 {
     public partial class FrmMain : Baseform
     {
-        private readonly BeatModsHandler _beatModsHandler = new BeatModsHandler();
-        private readonly BeatSaverHandler _beatSaverHandler = new BeatSaverHandler();
-        public static string GameDirectory = "";
+        private readonly BeatModsHandler _beatModsHandler;
+        private readonly BeatSaverHandler _beatSaverHandler;
+        private readonly FileHelper _fileHelper;
+        private readonly SettingsHandler _settingsHandler;
+        private readonly Settings _settings;
+        private StandardKernel _kernel = new StandardKernel(new MainKernel());
 
         public FrmMain()
         {
             InitializeComponent();
+
+            // Gets the needed classes
+            _beatModsHandler = _kernel.Get<BeatModsHandler>();
+            _beatSaverHandler = _kernel.Get<BeatSaverHandler>();
+            _fileHelper = _kernel.Get<FileHelper>();
+            _settingsHandler = _kernel.Get<SettingsHandler>();
 
             _beatModsHandler.StatusHandler += (sender, e) =>
             {
@@ -27,10 +38,8 @@ namespace BeatSaberModInstaller
 #if DEBUG
             AllocConsole();
 #endif
-            if (File.Exists("path.txt"))
-            {
-                txtGameDirectory.Text = File.ReadAllText("path.txt");
-            }
+            _settings = _settingsHandler.GetSettings();
+            txtGamePath.Text = _settings.GamePath;
         }
 
         private void OnFormShown(object sender, EventArgs e)
@@ -48,7 +57,7 @@ namespace BeatSaberModInstaller
 
                 foreach (var mod in modList.ToArray())
                 {
-                    lbMods.Items.Add(mod, mod.IsInstalled());
+                    lbMods.Items.Add(mod, mod.IsInstalled(_settings.GamePath));
                 }
 
                 UpdateStatus("Mod list loaded.");
@@ -65,20 +74,20 @@ namespace BeatSaberModInstaller
             {
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    txtGameDirectory.Text = fbd.SelectedPath;
+                    txtGamePath.Text = fbd.SelectedPath;
                 }
             }
         }
 
         private void OnGameDirectoryChanged(object sender, EventArgs e)
         {
-            File.WriteAllText("path.txt", txtGameDirectory.Text);
-            GameDirectory = txtGameDirectory.Text;
+            _settings.GamePath = txtGamePath.Text;
+            _settingsHandler.SaveSettings(_settings);
         }
 
         private async void OnInstallButtonClick(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtGameDirectory.Text))
+            if (string.IsNullOrWhiteSpace(txtGamePath.Text))
             {
                 UpdateStatus("You need to select the Beat Saber directory.");
 
@@ -92,14 +101,14 @@ namespace BeatSaberModInstaller
             {
                 if (!(item is ModApiObject modObject)) continue;
 
-                if (!await _beatModsHandler.DownloadMod(modObject, txtGameDirectory.Text))
+                if (!await _beatModsHandler.DownloadMod(modObject, txtGamePath.Text))
                 {
                     downloadsFinished = false;
                 }
             }
 
             _beatModsHandler.ResetDownloadedMods();
-            FileHelper.Instance.DeleteDirectory(FileHelper.TempDirectory);
+            _fileHelper.DeleteDirectory(FileHelper.TempDirectory);
 
             UpdateStatus(downloadsFinished ? "Download was successful." : "Download failed.");
             btnUpdateInstall.Enabled = true;

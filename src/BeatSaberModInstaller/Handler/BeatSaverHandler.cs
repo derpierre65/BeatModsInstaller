@@ -1,15 +1,21 @@
 using System;
 using System.Linq;
 using BeatSaberModInstaller.Core;
-using BeatSaberModInstaller.Models;
+using BeatSaberModInstaller.Models.BeatSaver;
 using Newtonsoft.Json;
 
 namespace BeatSaberModInstaller.Handler
 {
     public class BeatSaverHandler
     {
-        public const string BeatSaverUrl = "https://beatsaver.com/";
-        private readonly HttpHelper _httpHelper = new HttpHelper();
+        private const string BeatSaverUrl = "https://beatsaver.com/";
+        private readonly HttpHelper _httpHelper;
+
+        public BeatSaverHandler(HttpHelper httpHelper)
+        {
+            _httpHelper = httpHelper ?? throw new ArgumentNullException(nameof(httpHelper));
+        }
+
         public SongObject Search(string searchText)
         {
             if (string.IsNullOrWhiteSpace(searchText))
