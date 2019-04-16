@@ -1,5 +1,5 @@
 using System;
-using System.IO;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using BeatSaberModInstaller.Core;
@@ -30,11 +30,7 @@ namespace BeatSaberModInstaller
             _fileHelper = _kernel.Get<FileHelper>();
             _settingsHandler = _kernel.Get<SettingsHandler>();
 
-            _beatModsHandler.StatusHandler += (sender, e) =>
-            {
-                UpdateStatus(e.Message);
-            };
-
+            _beatModsHandler.StatusHandler += (sender, e) => { UpdateStatus(e.Message); };
 #if DEBUG
             AllocConsole();
 #endif
@@ -43,6 +39,11 @@ namespace BeatSaberModInstaller
         }
 
         private void OnFormShown(object sender, EventArgs e)
+        {
+            UpdateModList();
+        }
+
+        private void UpdateModList()
         {
             UpdateStatus("Loading mod list...");
 
@@ -55,6 +56,7 @@ namespace BeatSaberModInstaller
                     return;
                 }
 
+                lbMods.Items.Clear();
                 foreach (var mod in modList.ToArray())
                 {
                     lbMods.Items.Add(mod, mod.IsInstalled(_settings.GamePath));
@@ -83,6 +85,7 @@ namespace BeatSaberModInstaller
         {
             _settings.GamePath = txtGamePath.Text;
             _settingsHandler.SaveSettings(_settings);
+            UpdateModList();
         }
 
         private async void OnInstallButtonClick(object sender, EventArgs e)
@@ -116,7 +119,6 @@ namespace BeatSaberModInstaller
 
         private void OnOpenLinkButtonClick(object sender, EventArgs e)
         {
-            lbMods.SelectionMode = SelectionMode.MultiSimple;
             if (lbMods.SelectedItem is ModApiObject modObject && !string.IsNullOrWhiteSpace(modObject.Link))
             {
                 System.Diagnostics.Process.Start(modObject.Link);
@@ -139,5 +141,36 @@ namespace BeatSaberModInstaller
 #endif
 
         #endregion
+
+        private void OnSongSearch(object sender, EventArgs e)
+        {
+            var foundSongs = _beatSaverHandler.SearchSong(txtSearchSongTitle.Text);
+            panelSongs.Controls.Clear();
+
+            var item = 0;
+            foreach (var song in foundSongs.Songs)
+            {
+                var picture = new PictureBox
+                {
+                    Location = new Point(5, (96 + 10) * item),
+                    Width = 96,
+                    Height = 96,
+                    SizeMode = PictureBoxSizeMode.Zoom
+                };
+                var label = new Label
+                {
+                    AutoSize = true,
+                    Location = new Point(96 + 5, (96 + 10) * item),
+                    ForeColor = Color.White
+                };
+                label.Text = song.SongName + "\n" + song.AuthorName + "\nDownloads: " + song.DownloadCount + @", Played: " + song.PlayedCount;
+                picture.LoadAsync(song.CoverUrl);
+                panelSongs.Controls.Add(picture);
+                panelSongs.Controls.Add(label);
+                item++;
+            }
+
+            lbSongs.Visible = false;
+        }
     }
 }

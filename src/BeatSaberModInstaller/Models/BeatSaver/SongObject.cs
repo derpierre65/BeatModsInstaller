@@ -29,7 +29,7 @@ namespace BeatSaberModInstaller.Models.BeatSaver
         
         public override string ToString()
         {
-            return AuthorName + " - " + SongName + " by " + Uploader;
+            return SongName;
         }
     }
 }

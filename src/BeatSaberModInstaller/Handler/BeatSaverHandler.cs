@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using BeatSaberModInstaller.Core;
 using BeatSaberModInstaller.Models.BeatSaver;
 using Newtonsoft.Json;
@@ -16,62 +15,53 @@ namespace BeatSaberModInstaller.Handler
             _httpHelper = httpHelper ?? throw new ArgumentNullException(nameof(httpHelper));
         }
 
-        public SongObject SearchSong(string searchText)
+        public SongsObject SearchSong(string searchText)
         {
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                Console.WriteLine(@"empty string ;)");
-                return null;
-            }
-
-            return GetSongsByEndpoint( "songs/search/all/" + searchText);
+            return !string.IsNullOrWhiteSpace(searchText) ? GetSongsByEndpoint("songs/search/all/" + searchText) : null;
         }
 
-        public SongObject SearchSongsByUser(string username)
+        public SongsObject SearchSongsByUser(string username)
         {
-            if (string.IsNullOrWhiteSpace(username))
-            {
-                Console.WriteLine(@"empty string ;)");
-                return null;
-            }
-
-            return GetSongsByEndpoint("songs/byuser/" + username);
+            return !string.IsNullOrWhiteSpace(username) ? GetSongsByEndpoint("songs/byuser/" + username) : null;
         }
 
-        public SongObject GetTopDownloadedSongs()
+        public SongsObject GetTopDownloadedSongs()
         {
             return GetSongsByEndpoint("songs/top/");
         }
 
-        public SongObject GetTopPlayedSongs()
+        public SongsObject GetTopPlayedSongs()
         {
             return GetSongsByEndpoint("songs/plays/");
         }
 
-        public SongObject GetNewestSongs()
+        public SongsObject GetNewestSongs()
         {
             return GetSongsByEndpoint("songs/new/");
         }
 
-        public SongObject GetTopRatedSongs()
+        public SongsObject GetTopRatedSongs()
         {
             return GetSongsByEndpoint("songs/rated/");
         }
 
-        private SongObject GetSongsByEndpoint(string endpoint)
+        private SongsObject GetSongsByEndpoint(string endpoint)
         {
             var songResult = _httpHelper.Get(BeatSaverUrl + endpoint);
-            if (songResult == null)
-                return null;
+            Console.WriteLine(BeatSaverUrl + endpoint + " -> " + songResult);
+            
+            if (songResult == null) return null;
 
             var foundSongs = JsonConvert.DeserializeObject<SongsObject>(songResult);
 
-#if Debug
-            Console.WriteLine(foundSongs.Songs.First().Difficulties);
-            Console.WriteLine(foundSongs.Songs.First().CoverUrl);
-#endif 
+            return foundSongs;
+        }
 
-            return new SongObject();
+        public void GetInstalled()
+        {
+            /*foreach (var dir in Directory.GetDirectories())
+            {
+            }*/
         }
     }
 }
