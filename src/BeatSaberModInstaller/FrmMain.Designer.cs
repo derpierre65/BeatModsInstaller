@@ -38,9 +38,12 @@
             this.lbMods = new System.Windows.Forms.CheckedListBox();
             this.tpCredits = new System.Windows.Forms.TabPage();
             this.txtCredits = new Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox();
+            this.tpSongs = new System.Windows.Forms.TabPage();
+            this.lbSongs = new System.Windows.Forms.CheckedListBox();
             this.customTabControl1.SuspendLayout();
             this.tpMods.SuspendLayout();
             this.tpCredits.SuspendLayout();
+            this.tpSongs.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtGamePath
@@ -75,6 +78,7 @@
             // customTabControl1
             // 
             this.customTabControl1.Controls.Add(this.tpMods);
+            this.customTabControl1.Controls.Add(this.tpSongs);
             this.customTabControl1.Controls.Add(this.tpCredits);
             this.customTabControl1.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.customTabControl1.Location = new System.Drawing.Point(7, 110);
@@ -161,6 +165,30 @@
             this.txtCredits.TabIndex = 0;
             this.txtCredits.Text = "Tool created by:\n- Cr1TiKa7\n- derpierre65\n\nBeatMods Developer:\n- vanZeben";
             // 
+            // tpSongs
+            // 
+            this.tpSongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tpSongs.Controls.Add(this.lbSongs);
+            this.tpSongs.Location = new System.Drawing.Point(4, 25);
+            this.tpSongs.Name = "tpSongs";
+            this.tpSongs.Size = new System.Drawing.Size(801, 409);
+            this.tpSongs.TabIndex = 2;
+            this.tpSongs.Text = "Songs";
+            // 
+            // lbSongs
+            // 
+            this.lbSongs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.lbSongs.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbSongs.ForeColor = System.Drawing.Color.White;
+            this.lbSongs.FormattingEnabled = true;
+            this.lbSongs.Location = new System.Drawing.Point(1, 0);
+            this.lbSongs.Name = "lbSongs";
+            this.lbSongs.Size = new System.Drawing.Size(800, 374);
+            this.lbSongs.TabIndex = 1;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -180,6 +208,7 @@
             this.tpMods.ResumeLayout(false);
             this.tpMods.PerformLayout();
             this.tpCredits.ResumeLayout(false);
+            this.tpSongs.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,6 +225,8 @@
         private Cr1TiKa7_Framework.Controls.Button.FlatButton btnUpdateInstall;
         private System.Windows.Forms.Label statusLabel;
         private Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox txtCredits;
+        private System.Windows.Forms.TabPage tpSongs;
+        private System.Windows.Forms.CheckedListBox lbSongs;
     }
 }
 
