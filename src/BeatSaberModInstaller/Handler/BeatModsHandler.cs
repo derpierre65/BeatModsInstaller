@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using BeatSaberModInstaller.Core;
 using BeatSaberModInstaller.Models;
 using Newtonsoft.Json;
@@ -25,13 +26,14 @@ namespace BeatSaberModInstaller.Handler
         private const string ModApiBasicUrl = "https://beatmods.com";
         private const string ModApiUrl = "/api/v1/mod";
 
+        private HttpHelper _httpHelper = new HttpHelper();
 //        private readonly string _tmpFileName = ".\\mod.zip";
         private readonly List<string> _downloadedPackages = new List<string>();
         private IEnumerable<ModApiObject> _mods = new List<ModApiObject>();
 
         public List<ModApiObject> GetModList()
         {
-            var modResult = HttpHelper.Get(ModApiBasicUrl + ModApiUrl);
+            var modResult = _httpHelper.Get(ModApiBasicUrl + ModApiUrl);
             if (modResult == null)
             {
                 return null;
@@ -48,22 +50,23 @@ namespace BeatSaberModInstaller.Handler
             return ret;
         }
 
-        public bool DownloadMod(ModApiObject mod, string destinationDirectory)
+        public async Task<bool> DownloadMod(ModApiObject mod, string destinationDirectory)
         {
             if (_downloadedPackages.Contains(mod.Name))
             {
                 return true;
             }
+
             _downloadedPackages.Add(mod.Name);
-            
+
             StatusHandler?.Invoke(null, new StatusEvent($"Downloading {mod.Name}..."));
 
             var tmpFileName = $"mod-{mod.Name}-{mod.Version}.zip";
-            if (!HttpHelper.DownloadFile(new Uri(ModApiBasicUrl + mod.Downloads.First().Url), tmpFileName))
+            if (!await _httpHelper.DownloadFile(new Uri(ModApiBasicUrl + mod.Downloads.First().Url), tmpFileName))
             {
-                // update status
                 return false;
             }
+
             FileHelper.Extract(tmpFileName, destinationDirectory);
             File.Delete(tmpFileName);
 
@@ -74,7 +77,7 @@ namespace BeatSaberModInstaller.Handler
                     var depMod = _mods.FirstOrDefault(x => x.Id == dependency);
                     if (depMod != null)
                     {
-                        DownloadMod(depMod, destinationDirectory);
+                        await DownloadMod(depMod, destinationDirectory);
                     }
                 }
             }
@@ -82,7 +85,7 @@ namespace BeatSaberModInstaller.Handler
             {
                 foreach (var dependency in mod.Dependencies)
                 {
-                    DownloadMod(dependency, destinationDirectory);
+                   await DownloadMod(dependency, destinationDirectory);
                 }
             }
 

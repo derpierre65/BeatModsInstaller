@@ -9,7 +9,7 @@ namespace BeatSaberModInstaller.Handler
     public class BeatSaverHandler
     {
         public const string BeatSaverUrl = "https://beatsaver.com/";
-
+        private readonly HttpHelper _httpHelper = new HttpHelper();
         public SongObject Search(string searchText)
         {
             if (string.IsNullOrWhiteSpace(searchText))
@@ -18,7 +18,7 @@ namespace BeatSaberModInstaller.Handler
                 return null;
             }
 
-            var songResult = HttpHelper.Get(BeatSaverUrl + "api/songs/search/all/" + searchText);
+            var songResult = _httpHelper.Get(BeatSaverUrl + "api/songs/search/all/" + searchText);
             if (songResult == null)
             {
                 return null;
