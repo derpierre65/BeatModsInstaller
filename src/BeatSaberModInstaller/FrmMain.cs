@@ -99,7 +99,7 @@ namespace BeatSaberModInstaller
             }
 
             _beatModsHandler.ResetDownloadedMods();
-            FileHelper.DeleteDirectory(FileHelper.TempDirectory);
+            FileHelper.Instance.DeleteDirectory(FileHelper.TempDirectory);
 
             UpdateStatus(downloadsFinished ? "Download was successful." : "Download failed.");
             btnUpdateInstall.Enabled = true;

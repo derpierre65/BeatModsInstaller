@@ -1,18 +1,19 @@
-using System;
 using System.IO;
 using System.IO.Compression;
-using System.Net;
 
 namespace BeatSaberModInstaller.Core
 {
-    public static class FileHelper
+    public class FileHelper
     {
         public const string TempDirectory = "./downloads";
 
+        private static FileHelper _instance;
+        public static FileHelper Instance => _instance ?? (_instance = new FileHelper());
+        
         /**
          * delete a complete directory
          */
-        public static void DeleteDirectory(string directory)
+        public void DeleteDirectory(string directory)
         {
             if (string.IsNullOrWhiteSpace(directory)) return;
 
@@ -32,7 +33,7 @@ namespace BeatSaberModInstaller.Core
             Directory.Delete(directory);
         }
 
-        public static void Extract(string zipFile, string destinationDirectory)
+        public void Extract(string zipFile, string destinationDirectory)
         {
             ZipFile.ExtractToDirectory(zipFile, TempDirectory);
             CopyFiles(TempDirectory, destinationDirectory);
@@ -43,7 +44,7 @@ namespace BeatSaberModInstaller.Core
         /// </summary>
         /// <param name="source">The source directory</param>
         /// <param name="destination">The destination directory</param>
-        public static void CopyFiles(string source, string destination)
+        public void CopyFiles(string source, string destination)
         {
             // create directory if not exists
             if (!Directory.Exists(destination))

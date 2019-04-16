@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -67,7 +67,7 @@ namespace BeatSaberModInstaller.Handler
                 return false;
             }
 
-            FileHelper.Extract(tmpFileName, destinationDirectory);
+            FileHelper.Instance.Extract(tmpFileName, destinationDirectory);
             File.Delete(tmpFileName);
 
             if (mod is ModDependencyObject dependencyMod)
