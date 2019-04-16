@@ -13,6 +13,7 @@ namespace BeatSaberModInstaller
     {
         private readonly BeatModsHandler _beatModsHandler = new BeatModsHandler();
         private readonly BeatSaverHandler _beatSaverHandler = new BeatSaverHandler();
+        public static string Test = "";
 
         public FrmMain()
         {
@@ -45,7 +46,11 @@ namespace BeatSaberModInstaller
                     return;
                 }
 
-                lbMods.Items.AddRange(modList.ToArray());
+                foreach (var mod in modList.ToArray())
+                {
+                    lbMods.Items.Add(mod, mod.IsInstalled());
+                }
+
                 UpdateStatus("Mod list loaded.");
             }
             catch (Exception ex)
@@ -68,6 +73,7 @@ namespace BeatSaberModInstaller
         private void OnGameDirectoryChanged(object sender, EventArgs e)
         {
             File.WriteAllText("path.txt", txtGameDirectory.Text);
+            Test = txtGameDirectory.Text;
         }
 
         private void OnInstallButtonClick(object sender, EventArgs e)

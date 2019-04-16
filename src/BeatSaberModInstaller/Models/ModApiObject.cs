@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace BeatSaberModInstaller.Models
@@ -21,6 +23,11 @@ namespace BeatSaberModInstaller.Models
         public IEnumerable<ModDownloadObject> Downloads { get; set; } = new List<ModDownloadObject>();
         public bool Required { get; set; }
         public IEnumerable<ModDependencyObject> Dependencies { get; set; } = new List<ModDependencyObject>();
+
+        public bool IsInstalled()
+        {
+            return File.Exists(FrmMain.Test + "/" + Downloads.First().HashMd5.First().File);
+        }
 
         public override string ToString()
         {
