@@ -76,7 +76,7 @@ namespace BeatSaberModInstaller
             GameDirectory = txtGameDirectory.Text;
         }
 
-        private void OnInstallButtonClick(object sender, EventArgs e)
+        private async void OnInstallButtonClick(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtGameDirectory.Text))
             {
@@ -92,7 +92,7 @@ namespace BeatSaberModInstaller
             {
                 if (!(item is ModApiObject modObject)) continue;
 
-                if (!_beatModsHandler.DownloadMod(modObject, txtGameDirectory.Text))
+                if (!await _beatModsHandler.DownloadMod(modObject, txtGameDirectory.Text))
                 {
                     downloadsFinished = false;
                 }
@@ -116,6 +116,8 @@ namespace BeatSaberModInstaller
 
         private void UpdateStatus(string status)
         {
+            if (InvokeRequired)
+                Invoke((MethodInvoker) delegate { UpdateStatus(status); });
             statusLabel.Text = $@"Status: {status}";
         }
 

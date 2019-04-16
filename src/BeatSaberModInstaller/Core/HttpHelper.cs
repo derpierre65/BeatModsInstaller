@@ -1,23 +1,21 @@
 using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace BeatSaberModInstaller.Core
 {
-    public static class HttpHelper
+    public class HttpHelper : IDisposable
     {
-        public static readonly WebClient WebClient = new WebClient();
+        private readonly WebClient _webClient = new WebClient();
 
-        public static string Get(string url)
+        public string Get(string url)
         {
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                return null;
-            }
+            if (string.IsNullOrWhiteSpace(url)) return null;
 
             try
             {
-                return WebClient.DownloadString(url);
+                return _webClient.DownloadString(url);
             }
             catch (Exception ex)
             {
@@ -26,29 +24,31 @@ namespace BeatSaberModInstaller.Core
             }
         }
 
-        public static bool DownloadFile(Uri uri, string filename, bool overwrite = true)
+        public async Task<bool> DownloadFile(Uri uri, string filename, bool overwrite = true)
         {
-            if (!Directory.Exists(FileHelper.TempDirectory))
+            return await Task.Run(() =>
             {
-                Directory.CreateDirectory(FileHelper.TempDirectory);
-            }
+                if (!Directory.Exists(FileHelper.TempDirectory))
+                    Directory.CreateDirectory(FileHelper.TempDirectory);
 
-            if (File.Exists(filename))
-            {
-                if (overwrite)
+                if (File.Exists(filename))
                 {
-                    File.Delete(filename);
+                    if (overwrite)
+                        File.Delete(filename);
+                    // return false -> file exists and should not be overwritten
+                    else
+                        return false;
                 }
-                // return false -> file exists and should not overwrite
-                else
-                {
-                    return false;
-                }
-            }
 
-            WebClient.DownloadFile(uri, filename);
+                _webClient.DownloadFile(uri, filename);
 
-            return File.Exists(filename);
+                return File.Exists(filename);
+            });
+        }
+
+        public void Dispose()
+        {
+            _webClient?.Dispose();
         }
     }
 }

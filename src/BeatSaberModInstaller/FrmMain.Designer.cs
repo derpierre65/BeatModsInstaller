@@ -33,10 +33,10 @@
             this.btnBrowse = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.customTabControl1 = new Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl();
             this.tpMods = new System.Windows.Forms.TabPage();
-            this.tpCredits = new System.Windows.Forms.TabPage();
-            this.lbMods = new System.Windows.Forms.CheckedListBox();
-            this.btnUpdateInstall = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.btnUpdateInstall = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
+            this.lbMods = new System.Windows.Forms.CheckedListBox();
+            this.tpCredits = new System.Windows.Forms.TabPage();
             this.txtCredits = new Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox();
             this.customTabControl1.SuspendLayout();
             this.tpMods.SuspendLayout();
@@ -97,30 +97,16 @@
             this.tpMods.TabIndex = 0;
             this.tpMods.Text = "Mods";
             // 
-            // tpCredits
+            // statusLabel
             // 
-            this.tpCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
-            this.tpCredits.Controls.Add(this.txtCredits);
-            this.tpCredits.Location = new System.Drawing.Point(4, 25);
-            this.tpCredits.Name = "tpCredits";
-            this.tpCredits.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCredits.Size = new System.Drawing.Size(801, 409);
-            this.tpCredits.TabIndex = 1;
-            this.tpCredits.Text = "Credits";
-            // 
-            // lbMods
-            // 
-            this.lbMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
-            this.lbMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbMods.ForeColor = System.Drawing.Color.White;
-            this.lbMods.FormattingEnabled = true;
-            this.lbMods.Location = new System.Drawing.Point(1, 0);
-            this.lbMods.Name = "lbMods";
-            this.lbMods.Size = new System.Drawing.Size(800, 374);
-            this.lbMods.TabIndex = 0;
+            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Location = new System.Drawing.Point(6, 380);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(52, 20);
+            this.statusLabel.TabIndex = 2;
+            this.statusLabel.Text = "Status:";
             // 
             // btnUpdateInstall
             // 
@@ -137,16 +123,30 @@
             this.btnUpdateInstall.UseVisualStyleBackColor = false;
             this.btnUpdateInstall.Click += new System.EventHandler(this.OnInstallButtonClick);
             // 
-            // lblStatus
+            // lbMods
             // 
-            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Location = new System.Drawing.Point(6, 380);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(52, 20);
-            this.statusLabel.TabIndex = 2;
-            this.statusLabel.Text = "Status:";
+            this.lbMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.lbMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbMods.ForeColor = System.Drawing.Color.White;
+            this.lbMods.FormattingEnabled = true;
+            this.lbMods.Location = new System.Drawing.Point(1, 0);
+            this.lbMods.Name = "lbMods";
+            this.lbMods.Size = new System.Drawing.Size(800, 374);
+            this.lbMods.TabIndex = 0;
+            // 
+            // tpCredits
+            // 
+            this.tpCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tpCredits.Controls.Add(this.txtCredits);
+            this.tpCredits.Location = new System.Drawing.Point(4, 25);
+            this.tpCredits.Name = "tpCredits";
+            this.tpCredits.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCredits.Size = new System.Drawing.Size(801, 409);
+            this.tpCredits.TabIndex = 1;
+            this.tpCredits.Text = "Credits";
             // 
             // txtCredits
             // 
