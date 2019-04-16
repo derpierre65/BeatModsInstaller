@@ -26,7 +26,7 @@ namespace BeatSaberModInstaller.Models
 
         public bool IsInstalled()
         {
-            return File.Exists(FrmMain.Test + "/" + Downloads.First().HashMd5.First().File);
+            return File.Exists(FrmMain.GameDirectory + "/" + Downloads.First().HashMd5.First().File);
         }
 
         public override string ToString()

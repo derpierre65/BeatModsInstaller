@@ -6,6 +6,7 @@ namespace BeatSaberModInstaller.Models
     {
         public SongDifficultyObject Easy;
         public SongDifficultyObject Normal;
+        public SongDifficultyObject Hard;
         public SongDifficultyObject Expert;
         public SongDifficultyObject ExpertPlus;
     }

@@ -13,7 +13,7 @@ namespace BeatSaberModInstaller
     {
         private readonly BeatModsHandler _beatModsHandler = new BeatModsHandler();
         private readonly BeatSaverHandler _beatSaverHandler = new BeatSaverHandler();
-        public static string Test = "";
+        public static string GameDirectory = "";
 
         public FrmMain()
         {
@@ -73,7 +73,7 @@ namespace BeatSaberModInstaller
         private void OnGameDirectoryChanged(object sender, EventArgs e)
         {
             File.WriteAllText("path.txt", txtGameDirectory.Text);
-            Test = txtGameDirectory.Text;
+            GameDirectory = txtGameDirectory.Text;
         }
 
         private void OnInstallButtonClick(object sender, EventArgs e)
