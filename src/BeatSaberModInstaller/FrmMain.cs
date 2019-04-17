@@ -7,7 +7,9 @@ using BeatSaberModInstaller.Handler;
 using BeatSaberModInstaller.Models;
 using BeatSaberModInstaller.Models.BeatMods;
 using Cr1TiKa7_Framework.Baseform;
+using Microsoft.Extensions.Logging;
 using Ninject;
+using Ninject.Parameters;
 
 namespace BeatSaberModInstaller
 {
@@ -18,6 +20,7 @@ namespace BeatSaberModInstaller
         private readonly FileHelper _fileHelper;
         private readonly SettingsHandler _settingsHandler;
         private readonly Settings _settings;
+        private ILoggerFactory _loggerFactory;
         private StandardKernel _kernel = new StandardKernel(new MainKernel());
 
         public FrmMain()
@@ -29,7 +32,6 @@ namespace BeatSaberModInstaller
             _beatSaverHandler = _kernel.Get<BeatSaverHandler>();
             _fileHelper = _kernel.Get<FileHelper>();
             _settingsHandler = _kernel.Get<SettingsHandler>();
-
             _beatModsHandler.StatusHandler += (sender, e) => { UpdateStatus(e.Message); };
 #if DEBUG
             AllocConsole();
@@ -145,6 +147,8 @@ namespace BeatSaberModInstaller
         private void OnSongSearch(object sender, EventArgs e)
         {
             var foundSongs = _beatSaverHandler.SearchSong(txtSearchSongTitle.Text);
+            //In case that the songs list is null return.
+            if (foundSongs?.Songs == null) return;
             panelSongs.Controls.Clear();
 
             var item = 0;
@@ -163,7 +167,10 @@ namespace BeatSaberModInstaller
                     Location = new Point(96 + 5, (96 + 10) * item),
                     ForeColor = Color.White
                 };
-                label.Text = song.SongName + "\n" + song.AuthorName + "\nDownloads: " + song.DownloadCount + @", Played: " + song.PlayedCount;
+                label.Text = $"{song.SongName}\n" +
+                             $"{song.AuthorName}\n" +
+                             $"Downloads: {song.DownloadCount}\n" +
+                             $"Played: {song.PlayedCount}";
                 picture.LoadAsync(song.CoverUrl);
                 panelSongs.Controls.Add(picture);
                 panelSongs.Controls.Add(label);
