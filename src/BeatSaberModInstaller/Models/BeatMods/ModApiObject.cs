@@ -31,7 +31,7 @@ namespace BeatSaberModInstaller.Models.BeatMods
 
         public override string ToString()
         {
-            return Category + " | " + Name + " | " + Author.Username + " | " + Version;
+            return Category + " | " + Name + " | " + Author.Username + " | " + Version + " | " + UploadDate;
         }
     }
 }

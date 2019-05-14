@@ -125,6 +125,7 @@
     <Compile Include="Handler\BeatModsHandler.cs" />
     <Compile Include="Handler\BeatSaverHandler.cs" />
     <Compile Include="Handler\SettingsHandler.cs" />
+    <Compile Include="Models\CustomSong\CustomSong.cs" />
     <Compile Include="Models\Events\StatusEvent.cs" />
     <Compile Include="MainKernel.cs" />
     <Compile Include="Models\BeatMods\ModAuthorObject.cs" />

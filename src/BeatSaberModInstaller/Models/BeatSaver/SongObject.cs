@@ -1,3 +1,9 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
+using BeatSaberModInstaller.Core;
+using BeatSaberModInstaller.Handler;
+
 namespace BeatSaberModInstaller.Models.BeatSaver
 {
     public class SongObject
@@ -26,7 +32,47 @@ namespace BeatSaberModInstaller.Models.BeatSaver
         public string HashMd5 { get; set; }
         public string HashSha1 { get; set; }
         public SongDifficultiesObject Difficulties { get; set; }
-        
+
+        private string GetSongDirectory()
+        {
+            return SettingsHandler.Instance.GetSettings().GamePath + "/CustomSongs/" + Key+"/";
+        }
+
+        public bool IsInstalled()
+        {
+            return Directory.Exists(GetSongDirectory());
+        }
+
+        public bool Delete()
+        {
+            if (!IsInstalled())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> Install()
+        {
+            if (IsInstalled())
+            {
+                return true;
+            }
+
+            var tmpFileName = $"song-{Key}.zip";
+            if (!await HttpHelper.Instance.DownloadFile(new Uri(DownloadUrl), tmpFileName))
+            {
+                return false;
+            }           
+            FileHelper.Instance.Extract(tmpFileName, GetSongDirectory());
+            File.Delete(tmpFileName);
+
+            Console.WriteLine(GetSongDirectory());
+
+            return true;
+        }
+
         public override string ToString()
         {
             return SongName;

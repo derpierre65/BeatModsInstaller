@@ -1,4 +1,6 @@
-﻿namespace BeatSaberModInstaller
+﻿using System.Windows.Forms;
+
+namespace BeatSaberModInstaller
 {
     partial class FrmMain
     {
@@ -171,6 +173,8 @@
             this.txtSearchSongTitle.Name = "txtSearchSongTitle";
             this.txtSearchSongTitle.Size = new System.Drawing.Size(734, 28);
             this.txtSearchSongTitle.TabIndex = 5;
+            this.txtSearchSongTitle.KeyUp += new KeyEventHandler(this.OnSongSearch);
+            
             // 
             // btnSearchSong
             // 

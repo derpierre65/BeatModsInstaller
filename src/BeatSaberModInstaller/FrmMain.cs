@@ -36,8 +36,10 @@ namespace BeatSaberModInstaller
 #if DEBUG
             AllocConsole();
 #endif
-            _settings = _settingsHandler.GetSettings();
+            _settings = _settingsHandler.GetFileSettings();
             txtGamePath.Text = _settings.GamePath;
+
+            _beatSaverHandler.GetInstalled(_settings.GamePath);
         }
 
         private void OnFormShown(object sender, EventArgs e)
@@ -144,11 +146,33 @@ namespace BeatSaberModInstaller
 
         #endregion
 
+        private void OnSongSearch(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                OnSongSearch();
+            }
+        }
+
         private void OnSongSearch(object sender, EventArgs e)
         {
+            OnSongSearch();
+        }
+
+        private void OnSongSearch()
+        {
+            btnSearchSong.Enabled = false;
+            txtSearchSongTitle.Enabled = false;
+            
             var foundSongs = _beatSaverHandler.SearchSong(txtSearchSongTitle.Text);
             //In case that the songs list is null return.
-            if (foundSongs?.Songs == null) return;
+            if (foundSongs?.Songs == null)
+            {
+                btnSearchSong.Enabled = true;
+                txtSearchSongTitle.Enabled = true;
+
+                return;
+            }
             panelSongs.Controls.Clear();
 
             var item = 0;
@@ -164,20 +188,36 @@ namespace BeatSaberModInstaller
                 var label = new Label
                 {
                     AutoSize = true,
-                    Location = new Point(96 + 5, (96 + 10) * item),
-                    ForeColor = Color.White
+                    Location = new Point(5 + 96, (96 + 10) * item + 28),
+                    ForeColor = Color.White,
+                    Text = $"{song.SongName} - " + $"{song.AuthorName}\n" +
+                           $"Downloads: {song.DownloadCount}\n" +
+                           $"Played: {song.PlayedCount}"
                 };
-                label.Text = $"{song.SongName}\n" +
-                             $"{song.AuthorName}\n" +
-                             $"Downloads: {song.DownloadCount}\n" +
-                             $"Played: {song.PlayedCount}";
+                var installButton = new Cr1TiKa7_Framework.Controls.Button.FlatButton
+                {
+                    // 5 padding from pictureBox, 96 picture size, + 5 padding 
+                    Location = new Point(5 + 96 + 5, (96 + 10) * item),
+                    Text = "Install",
+                    Width = 100,
+                    Height = 28,
+                    Enabled = !song.IsInstalled()
+                };
+                installButton.Click += async (sender, e) =>
+                {
+                    await song.Install();
+                    OnSongSearch();
+                };
                 picture.LoadAsync(song.CoverUrl);
-                panelSongs.Controls.Add(picture);
                 panelSongs.Controls.Add(label);
+                panelSongs.Controls.Add(picture);
+                panelSongs.Controls.Add(installButton);
                 item++;
             }
 
             lbSongs.Visible = false;
+            btnSearchSong.Enabled = true;
+            txtSearchSongTitle.Enabled = true;
         }
     }
 }

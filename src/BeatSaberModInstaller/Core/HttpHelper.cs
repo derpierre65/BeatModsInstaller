@@ -8,6 +8,8 @@ namespace BeatSaberModInstaller.Core
     public class HttpHelper : IDisposable
     {
         private readonly WebClient _webClient = new WebClient();
+        private static HttpHelper _instance;
+        public static HttpHelper Instance => _instance ?? (_instance = new HttpHelper());
 
         public string Get(string url)
         {

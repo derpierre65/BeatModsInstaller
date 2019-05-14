@@ -6,6 +6,8 @@ namespace BeatSaberModInstaller.Core
     public class FileHelper
     {
         public const string TempDirectory = "./downloads";
+        private static FileHelper _instance;
+        public static FileHelper Instance => _instance ?? (_instance = new FileHelper());
         
         /// <summary>
         /// Deletes a directory which is not empty.

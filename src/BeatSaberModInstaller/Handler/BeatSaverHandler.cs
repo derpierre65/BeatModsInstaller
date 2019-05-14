@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using BeatSaberModInstaller.Core;
 using BeatSaberModInstaller.Models.BeatSaver;
 using Microsoft.Extensions.Logging;
@@ -71,11 +72,22 @@ namespace BeatSaberModInstaller.Handler
             return foundSongs;
         }
 
-        public void GetInstalled()
+        public void GetInstalled(string gamePath)
         {
-            /*foreach (var dir in Directory.GetDirectories())
+            var customSongsDirectory = gamePath + "/CustomSongs";
+            if (!Directory.Exists(customSongsDirectory))
             {
-            }*/
+                return;
+            }
+            
+            foreach (var dir in Directory.GetDirectories(customSongsDirectory))
+            {
+                Console.WriteLine(dir);
+                foreach (var subDir in Directory.GetDirectories(dir))
+                {
+                    Console.WriteLine(" => " + subDir);
+                }
+            }
         }
     }
 }
