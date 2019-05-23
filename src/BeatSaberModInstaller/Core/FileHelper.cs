@@ -8,7 +8,7 @@ namespace BeatSaberModInstaller.Core
         public const string TempDirectory = "./downloads";
         private static FileHelper _instance;
         public static FileHelper Instance => _instance ?? (_instance = new FileHelper());
-        
+
         /// <summary>
         /// Deletes a directory which is not empty.
         /// </summary>
@@ -16,6 +16,7 @@ namespace BeatSaberModInstaller.Core
         public void DeleteDirectory(string directory)
         {
             if (string.IsNullOrWhiteSpace(directory)) return;
+            if (!Directory.Exists(directory)) return;
 
             // delete directory recursive
             foreach (var dir in Directory.GetDirectories(directory))

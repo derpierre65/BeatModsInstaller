@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace BeatSaberModInstaller
 {
@@ -35,6 +36,7 @@ namespace BeatSaberModInstaller
             this.btnBrowse = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.customTabControl1 = new Cr1TiKa7_Framework.Controls.TabControl.CustomTabControl();
             this.tpMods = new System.Windows.Forms.TabPage();
+            this.btnOpenLink = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.btnUpdateInstall = new Cr1TiKa7_Framework.Controls.Button.FlatButton();
             this.lbMods = new System.Windows.Forms.CheckedListBox();
             this.tpSongs = new System.Windows.Forms.TabPage();
@@ -45,6 +47,7 @@ namespace BeatSaberModInstaller
             this.tpCredits = new System.Windows.Forms.TabPage();
             this.txtCredits = new Cr1TiKa7_Framework.Controls.RichtTextBox.FlatRichTextBox();
             this.statusLabel = new System.Windows.Forms.Label();
+            this.comboBoxGameVersion = new Cr1TiKa7_Framework.Controls.ComboBox.FlatCombobox();
             this.customTabControl1.SuspendLayout();
             this.tpMods.SuspendLayout();
             this.tpSongs.SuspendLayout();
@@ -53,26 +56,25 @@ namespace BeatSaberModInstaller
             // 
             // txtGamePath
             // 
-            this.txtGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtGamePath.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.txtGamePath.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGamePath.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (37)))), ((int) (((byte) (39)))));
             this.txtGamePath.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtGamePath.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGamePath.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtGamePath.ForeColor = System.Drawing.Color.White;
             this.txtGamePath.Location = new System.Drawing.Point(7, 76);
             this.txtGamePath.Name = "txtGamePath";
-            this.txtGamePath.Size = new System.Drawing.Size(740, 28);
+            this.txtGamePath.Size = new System.Drawing.Size(659, 28);
             this.txtGamePath.TabIndex = 1;
             this.txtGamePath.TextChanged += new System.EventHandler(this.OnGameDirectoryChanged);
             // 
             // btnBrowse
             // 
-            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBrowse.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
             this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btnBrowse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.btnBrowse.Location = new System.Drawing.Point(753, 76);
+            this.btnBrowse.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (168)))), ((int) (((byte) (109)))));
+            this.btnBrowse.Location = new System.Drawing.Point(672, 76);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(90, 28);
             this.btnBrowse.TabIndex = 2;
@@ -82,9 +84,7 @@ namespace BeatSaberModInstaller
             // 
             // customTabControl1
             // 
-            this.customTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.customTabControl1.Controls.Add(this.tpMods);
             this.customTabControl1.Controls.Add(this.tpSongs);
             this.customTabControl1.Controls.Add(this.tpCredits);
@@ -94,11 +94,12 @@ namespace BeatSaberModInstaller
             this.customTabControl1.SelectedIndex = 0;
             this.customTabControl1.Size = new System.Drawing.Size(836, 368);
             this.customTabControl1.TabIndex = 3;
-            this.customTabControl1.TabPagesBackground = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.customTabControl1.TabPagesBackground = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
             // 
             // tpMods
             // 
-            this.tpMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tpMods.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
+            this.tpMods.Controls.Add(this.btnOpenLink);
             this.tpMods.Controls.Add(this.btnUpdateInstall);
             this.tpMods.Controls.Add(this.lbMods);
             this.tpMods.Location = new System.Drawing.Point(4, 25);
@@ -108,13 +109,28 @@ namespace BeatSaberModInstaller
             this.tpMods.TabIndex = 0;
             this.tpMods.Text = "Mods";
             // 
+            // btnModInfo
+            // 
+            this.btnOpenLink.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenLink.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
+            this.btnOpenLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenLink.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btnOpenLink.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (168)))), ((int) (((byte) (109)))));
+            this.btnOpenLink.Location = new System.Drawing.Point(647, 308);
+            this.btnOpenLink.Name = "btnOpenLink";
+            this.btnOpenLink.Size = new System.Drawing.Size(72, 23);
+            this.btnOpenLink.TabIndex = 2;
+            this.btnOpenLink.Text = "Open Link";
+            this.btnOpenLink.UseVisualStyleBackColor = false;
+            this.btnOpenLink.Click += new System.EventHandler(this.OnOpenLinkButtonClick);
+            // 
             // btnUpdateInstall
             // 
-            this.btnUpdateInstall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateInstall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.btnUpdateInstall.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateInstall.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
             this.btnUpdateInstall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdateInstall.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btnUpdateInstall.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.btnUpdateInstall.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (168)))), ((int) (((byte) (109)))));
             this.btnUpdateInstall.Location = new System.Drawing.Point(725, 308);
             this.btnUpdateInstall.Name = "btnUpdateInstall";
             this.btnUpdateInstall.Size = new System.Drawing.Size(97, 23);
@@ -125,10 +141,8 @@ namespace BeatSaberModInstaller
             // 
             // lbMods
             // 
-            this.lbMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbMods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.lbMods.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbMods.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (37)))), ((int) (((byte) (39)))));
             this.lbMods.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbMods.ForeColor = System.Drawing.Color.White;
             this.lbMods.FormattingEnabled = true;
@@ -139,7 +153,7 @@ namespace BeatSaberModInstaller
             // 
             // tpSongs
             // 
-            this.tpSongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tpSongs.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
             this.tpSongs.Controls.Add(this.panelSongs);
             this.tpSongs.Controls.Add(this.txtSearchSongTitle);
             this.tpSongs.Controls.Add(this.btnSearchSong);
@@ -152,9 +166,7 @@ namespace BeatSaberModInstaller
             // 
             // panelSongs
             // 
-            this.panelSongs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSongs.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSongs.AutoScroll = true;
             this.panelSongs.Location = new System.Drawing.Point(3, 66);
             this.panelSongs.Name = "panelSongs";
@@ -163,9 +175,8 @@ namespace BeatSaberModInstaller
             // 
             // txtSearchSongTitle
             // 
-            this.txtSearchSongTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearchSongTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.txtSearchSongTitle.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearchSongTitle.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (37)))), ((int) (((byte) (39)))));
             this.txtSearchSongTitle.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchSongTitle.Font = new System.Drawing.Font("Segoe UI", 15.75F);
             this.txtSearchSongTitle.ForeColor = System.Drawing.Color.White;
@@ -173,16 +184,15 @@ namespace BeatSaberModInstaller
             this.txtSearchSongTitle.Name = "txtSearchSongTitle";
             this.txtSearchSongTitle.Size = new System.Drawing.Size(734, 28);
             this.txtSearchSongTitle.TabIndex = 5;
-            this.txtSearchSongTitle.KeyUp += new KeyEventHandler(this.OnSongSearch);
-            
+            this.txtSearchSongTitle.KeyUp += new System.Windows.Forms.KeyEventHandler(this.OnSongSearch);
             // 
             // btnSearchSong
             // 
-            this.btnSearchSong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSearchSong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.btnSearchSong.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSearchSong.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
             this.btnSearchSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchSong.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.btnSearchSong.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.btnSearchSong.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (168)))), ((int) (((byte) (109)))));
             this.btnSearchSong.Location = new System.Drawing.Point(747, 15);
             this.btnSearchSong.Name = "btnSearchSong";
             this.btnSearchSong.Size = new System.Drawing.Size(71, 28);
@@ -193,10 +203,8 @@ namespace BeatSaberModInstaller
             // 
             // lbSongs
             // 
-            this.lbSongs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbSongs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.lbSongs.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSongs.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (37)))), ((int) (((byte) (39)))));
             this.lbSongs.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lbSongs.ForeColor = System.Drawing.Color.White;
             this.lbSongs.FormattingEnabled = true;
@@ -208,7 +216,7 @@ namespace BeatSaberModInstaller
             // 
             // tpCredits
             // 
-            this.tpCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.tpCredits.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (60)))), ((int) (((byte) (70)))), ((int) (((byte) (73)))));
             this.tpCredits.Controls.Add(this.txtCredits);
             this.tpCredits.Location = new System.Drawing.Point(4, 25);
             this.tpCredits.Name = "tpCredits";
@@ -219,12 +227,10 @@ namespace BeatSaberModInstaller
             // 
             // txtCredits
             // 
-            this.txtCredits.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCredits.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(37)))), ((int)(((byte)(39)))));
+            this.txtCredits.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCredits.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (35)))), ((int) (((byte) (37)))), ((int) (((byte) (39)))));
             this.txtCredits.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCredits.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCredits.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.txtCredits.ForeColor = System.Drawing.Color.White;
             this.txtCredits.Location = new System.Drawing.Point(0, 0);
             this.txtCredits.Name = "txtCredits";
@@ -235,7 +241,7 @@ namespace BeatSaberModInstaller
             // 
             // statusLabel
             // 
-            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.statusLabel.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.statusLabel.AutoSize = true;
             this.statusLabel.ForeColor = System.Drawing.Color.White;
             this.statusLabel.Location = new System.Drawing.Point(11, 446);
@@ -244,16 +250,29 @@ namespace BeatSaberModInstaller
             this.statusLabel.TabIndex = 2;
             this.statusLabel.Text = "Status:";
             // 
+            // comboBox1
+            // 
+            this.comboBoxGameVersion.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxGameVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxGameVersion.FormattingEnabled = true;
+            this.comboBoxGameVersion.Items.AddRange(new object[] {"1.0.0", "0.13.2"});
+            this.comboBoxGameVersion.Location = new System.Drawing.Point(768, 76);
+            this.comboBoxGameVersion.Name = "comboBoxGameVersion";
+            this.comboBoxGameVersion.Size = new System.Drawing.Size(71, 28);
+            this.comboBoxGameVersion.TabIndex = 3;
+            this.comboBoxGameVersion.SelectedIndexChanged += new System.EventHandler(this.OnGameVersionChange);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 485);
+            this.Controls.Add(this.comboBoxGameVersion);
             this.Controls.Add(this.statusLabel);
             this.Controls.Add(this.customTabControl1);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.txtGamePath);
-            this.FormIcon = ((System.Drawing.Image)(resources.GetObject("$this.FormIcon")));
+            this.FormIcon = ((System.Drawing.Image) (resources.GetObject("$this.FormIcon")));
             this.Name = "FrmMain";
             this.Text = "Beatsaber Mod Installer";
             this.Shown += new System.EventHandler(this.OnFormShown);
@@ -261,6 +280,7 @@ namespace BeatSaberModInstaller
             this.Controls.SetChildIndex(this.btnBrowse, 0);
             this.Controls.SetChildIndex(this.customTabControl1, 0);
             this.Controls.SetChildIndex(this.statusLabel, 0);
+            this.Controls.SetChildIndex(this.comboBoxGameVersion, 0);
             this.customTabControl1.ResumeLayout(false);
             this.tpMods.ResumeLayout(false);
             this.tpSongs.ResumeLayout(false);
@@ -268,7 +288,6 @@ namespace BeatSaberModInstaller
             this.tpCredits.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -287,6 +306,8 @@ namespace BeatSaberModInstaller
         private Cr1TiKa7_Framework.Controls.TextBox.FlatTextBox txtSearchSongTitle;
         private Cr1TiKa7_Framework.Controls.Button.FlatButton btnSearchSong;
         private System.Windows.Forms.Panel panelSongs;
+        private Cr1TiKa7_Framework.Controls.Button.FlatButton btnOpenLink;
+        private Cr1TiKa7_Framework.Controls.ComboBox.FlatCombobox comboBoxGameVersion;
     }
 }
 

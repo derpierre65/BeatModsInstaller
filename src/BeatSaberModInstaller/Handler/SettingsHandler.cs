@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BeatSaberModInstaller.Models;
+using BeatSaberModInstaller.Models.BeatMods;
 using Newtonsoft.Json;
 
 namespace BeatSaberModInstaller.Handler
@@ -53,11 +50,48 @@ namespace BeatSaberModInstaller.Handler
             return ret;
         }
 
-        public void SaveSettings(Settings settings)
+        public void SaveSettings(Settings settings = null)
         {
+            if (settings == null)
+            {
+                settings = _settings;
+            }
+
             using (var streamWriter = new StreamWriter(SettingsPath))
             {
                 streamWriter.WriteLine(JsonConvert.SerializeObject(settings));
+            }
+
+            // set current settings
+            _settings = settings;
+        }
+
+        public void AddInstalledMod(ModApiObject mod, bool forceSave = false)
+        {
+            // search mod and update
+            var installedMod = _settings.InstalledMods.FirstOrDefault(x =>
+            {
+                if (x.Name != mod.Name) return false;
+
+                x.SetMod(mod);
+                return true;
+            });
+
+            // mod not found -> new
+            if (installedMod == null)
+            {
+                installedMod = new SettingsModObject();
+                installedMod.SetMod(mod);
+
+                var installedMods = _settings.InstalledMods.ToList();
+                installedMods.Add(installedMod);
+
+                _settings.InstalledMods = installedMods.AsEnumerable();
+            }
+
+            if (forceSave)
+            {
+                SaveSettings();
             }
         }
     }

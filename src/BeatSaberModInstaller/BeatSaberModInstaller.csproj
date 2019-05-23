@@ -36,6 +36,10 @@
     <Reference Include="Cr1TiKa7.Framework, Version=1.0.0.1839, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\Cr1TiKa7.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466">
+      <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -138,6 +142,7 @@
     <Compile Include="Models\BeatSaver\SongDifficultyObject.cs" />
     <Compile Include="Models\BeatSaver\SongsObject.cs" />
     <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\SettingsModObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">

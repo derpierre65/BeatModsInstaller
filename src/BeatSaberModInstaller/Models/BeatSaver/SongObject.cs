@@ -49,6 +49,8 @@ namespace BeatSaberModInstaller.Models.BeatSaver
             {
                 return true;
             }
+            
+            FileHelper.Instance.DeleteDirectory(GetSongDirectory());
 
             return false;
         }
@@ -64,15 +66,15 @@ namespace BeatSaberModInstaller.Models.BeatSaver
             if (!await HttpHelper.Instance.DownloadFile(new Uri(DownloadUrl), tmpFileName))
             {
                 return false;
-            }           
+            }
+
             FileHelper.Instance.Extract(tmpFileName, GetSongDirectory());
             File.Delete(tmpFileName);
-
-            Console.WriteLine(GetSongDirectory());
 
             return true;
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return SongName;
